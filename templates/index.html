@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stock Price Prediction</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            padding: 30px;
+        }
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+        h2 {
+            text-align: center;
+        }
+        label {
+            font-weight: bold;
+        }
+        input {
+            width: 100%;
+            padding: 8px;
+            margin: 10px 0;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        .result {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 1.2em;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Stock Price Prediction</h2>
+        <form method="POST">
+            <label for="close_lag1">Previous Day's Close Price:</label>
+            <input type="text" id="close_lag1" name="close_lag1" required>
+
+            <label for="high_lag1">Previous Day's High:</label>
+            <input type="text" id="high_lag1" name="high_lag1" required>
+
+            <label for="low_lag1">Previous Day's Low:</label>
+            <input type="text" id="low_lag1" name="low_lag1" required>
+
+            <label for="volume_lag1">Previous Day's Volume:</label>
+            <input type="text" id="volume_lag1" name="volume_lag1" required>
+
+            <label for="open_price">Today's Open Price:</label>
+            <input type="text" id="open_price" name="open_price" required>
+
+            <button type="submit">Predict</button>
+        </form>
+
+        {% if predicted_close %}
+        <div class="result">
+            <p><strong>Predicted Close Price for Today: </strong>{{ predicted_close }}</p>
+        </div>
+        {% endif %}
+    </div>
+</body>
+</html>
